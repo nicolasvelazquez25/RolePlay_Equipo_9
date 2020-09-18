@@ -8,6 +8,19 @@ namespace Program
     {
         static void Main(string[] args)
         {
+            //Parte de Agustina Benia
+            Dagger dagger = new Dagger("Dagger", 88, 34);
+            IronNails ironNails = new IronNails("Iron Nails", 34, 78);
+            Witch witch1 = new Witch("Manon",100, dagger, ironNails);
+            Witch witch2 = new Witch("Asterin", 100, dagger, ironNails);
+            Console.WriteLine(witch1.MessageCharacter());
+            Console.WriteLine(witch2.MessageCharacter());
+            Console.WriteLine(witch2.MessageHealth());
+            witch1.MakeDmg(witch2);
+            Console.WriteLine(witch2.MessageHealth());
+            witch2.RestoreHealth();
+            Console.WriteLine(witch2.MessageHealth());
+
             // Parte de Yonatan Morgades
             Hammer h = new Hammer("Mjölnir", 200, 0);
             MagicRing m = new MagicRing("One ring", 0, 800);
@@ -43,3 +56,4 @@ namespace Program
         }
     }
 }
+
