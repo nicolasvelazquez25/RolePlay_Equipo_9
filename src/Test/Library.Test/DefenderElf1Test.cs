@@ -12,10 +12,10 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-        object1 = new SolarSword("Object1", 20, 10);
-        object2 = new SolarShield("Object2", 10, 5);
-        dummy1 = new DefenderElf1("Dummy", 100, object1, object2);
-        dummy2 = new DefenderElf1("Dummy2", 100, object1, object2); 
+            object1 = new SolarSword("Object1", 20, 10);
+            object2 = new SolarShield("Object2", 10, 5);
+            dummy1 = new DefenderElf1("Dummy", 100, object1, object2);
+            dummy2 = new DefenderElf1("Dummy2", 100, object1, object2); 
         }
 
         [Test]
