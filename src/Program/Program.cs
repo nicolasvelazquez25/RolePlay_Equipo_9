@@ -8,11 +8,18 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Spell crucio = new Spell("Crucio", 50, 20);
-            Spellbook libro_hechizo = new Spellbook("Libro hechizos", crucio);
-            WizardStick palo = new WizardStick("Palo magico", 60, 0);
-            Wizard merlin = new Wizard("Merlin", 100, libro_hechizo, palo);
-            Console.WriteLine(libro_hechizo.Attack);
+            // Parte de Fabio Luzzatto
+            Hammer h = new Hammer("Mjölnir", 200, 0);
+            MagicRing m = new MagicRing("One ring", 0, 800);
+            Dwarves dwarv1 = new Dwarves("ThorEnano",200, h, m);
+            Dwarves dwarv2 = new Dwarves("ThorEnano 2", 100, h, m);
+            Console.WriteLine(dwarv1.MessageCharacter());
+            Console.WriteLine(dwarv2.MessageCharacter());
+            Console.WriteLine(dwarv2.MessageHealth());
+            dwarv1.MakeDmg(dwarv2);
+            Console.WriteLine(dwarv2.MessageHealth());
+            dwarv2.RestoreHealth();
+            Console.WriteLine(dwarv2.MessageHealth());
         }
     }
 }
