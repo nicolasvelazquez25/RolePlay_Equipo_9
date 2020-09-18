@@ -12,7 +12,7 @@ namespace Program
             Spellbook libro_hechizo = new Spellbook("Libro hechizos", crucio);
             WizardStick palo = new WizardStick("Palo magico", 60, 0);
             Wizard merlin = new Wizard("Merlin", 100, libro_hechizo, palo);
-            Console.WriteLine(libro_hechizo.Attack);
+            Console.WriteLine(libro_hechizo.Dmg);
         }
     }
 }
