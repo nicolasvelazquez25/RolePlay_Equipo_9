@@ -13,9 +13,13 @@ namespace Program
             SolarShield shield = new SolarShield("Solar Shield", 0, 8000);
             DefenderElf1 elf1 = new DefenderElf1("Defender Elf",100, sword, shield);
             DefenderElf1 elf2 = new DefenderElf1("Defender Elf 2", 100, sword, shield);
+            Console.WriteLine(elf1.MessageCharacter());
+            Console.WriteLine(elf2.MessageCharacter());
+            Console.WriteLine(elf2.MessageHealth());
             elf1.MakeDmg(elf2);
             Console.WriteLine(elf2.MessageHealth());
-            Console.WriteLine(elf1.MessageCharacter());
+            elf2.RestoreHealth();
+            Console.WriteLine(elf2.MessageHealth());
         }
     }
 }
