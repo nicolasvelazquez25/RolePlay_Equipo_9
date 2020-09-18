@@ -51,5 +51,25 @@ namespace Library
         {
             return ($"Hero: {this.Name} \nHealth: {this.Health} \n_Items_{SolarSword.Message()}{SolarShield.Message()}\n");
         }
+
+        public void GetShield(SolarShield SolarShield)
+        {
+            this.SolarShield = SolarShield;
+        }
+
+        public void OutShield()
+        {
+            this.SolarShield = null;
+        }
+        public void GetSword(SolarSword solarSword)
+        {
+            this.SolarSword = solarSword;
+        }
+
+        public void OutSword()
+        {
+            this.SolarSword = null;
+        }
+
     }
 }
