@@ -4,15 +4,19 @@ namespace Library
     {
         public string Name{get; set;}
 
-        public int Attack{get; set;}
+        public int Dmg{get; set;}
 
-        public int Defense{get; set;}
+        public int Armor{get; set;}
 
-        public WizardStick(string Name, int Attack = 0, int Defense = 0)
+        public WizardStick(string Name, int Dmg = 0, int Armor = 0)
         {
             this.Name = Name;
-            this.Attack = Attack;
-            this.Defense = Defense;
+            this.Dmg = Dmg;
+            this.Armor = Armor;
+        }
+        public string Message()
+        {
+            return ($"\n~ {this.Name} \n    Damage: {this.Dmg} \n    Armour: {this.Armor}");
         }
     }
 }

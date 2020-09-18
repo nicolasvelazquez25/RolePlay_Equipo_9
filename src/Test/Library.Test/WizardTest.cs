@@ -27,7 +27,7 @@ namespace Test.Library
         [Test]
         /* Esta prueba se hace con el objetivo de verificar si el ataque producio sobre otro personaje es correcto, 
         usando AreEqual, siendo 30 la vida restante en caso de que el codigo este correcto*/
-        public void CorrectAttack()
+        public void CorrectDmg()
         {
             crucio = new Spell("Crucio", 50, 20);
             libro_hechizo = new Spellbook("Libro hechizos", crucio);
@@ -35,9 +35,9 @@ namespace Test.Library
             merlin = new Wizard("Merlin", 100, libro_hechizo, palo);
             voldemort = new Wizard("Voldemort", 100, libro_hechizo, palo);
             int vida_incial = voldemort.Health;
-            merlin.ToAttack(voldemort);
-            /* La vida de voldemort se ve reducida en 70, por lo que la vida resultante sera 30*/
-            Assert.AreEqual(vida_incial - merlin.ObjectBook.Attack - merlin.ObjectStick.Attack, voldemort.Health);
+            merlin.MakeDmg(voldemort);
+            /* La vida de voldemort se ve reducida, por lo que la vida resultante sera 31*/
+            Assert.AreEqual(31, voldemort.Health);
         }
 
         [Test]
@@ -50,32 +50,32 @@ namespace Test.Library
             palo = new WizardStick("Palo magico", 20, 0);
             merlin = new Wizard("Merlin", 100, libro_hechizo, palo);
             voldemort = new Wizard("Voldemort", 100, libro_hechizo, palo);
-            merlin.ToAttack(voldemort);
-            /* La vida de voldemort se ve reducida en 70*/
-            voldemort.ToHeal();
+            merlin.MakeDmg(voldemort);
+            /* La vida de voldemort se ve reducida en 50*/
+            voldemort.RestoreHealth();
             Assert.AreEqual(100, voldemort.Health);
         }
 
         [Test]
         /* En esta prueba se busca que este correcto el calculo que se hace de la suma de los daños de los objetos del personaje,
         usando nuevamente AreEqual para realizar la prueba*/
-        public void CorrectTotalAttack()
+        public void CorrectGetTotalDmg()
         {
             crucio = new Spell("Crucio", 50, 20);
             libro_hechizo = new Spellbook("Libro hechizos", crucio);
             palo = new WizardStick("Palo magico", 20, 0);
             merlin = new Wizard("Merlin", 100, libro_hechizo, palo);
             /* El daño de merlin es igual a la suma del daño del libro de hechizos y el stick*/
-            Assert.AreEqual(merlin.ObjectBook.Attack + merlin.ObjectStick.Attack, merlin.TotalAttack());
+            Assert.AreEqual(merlin.ObjectBook.Dmg + merlin.ObjectStick.Dmg, merlin.GetTotalDmg());
         }
 
         [Test]
         /* En esta prueba se busca que este correcto el calculo que se hace de la suma de las defensas de los objetos del personaje,
         usando nuevamente AreEqual para realizar la prueba*/
-        public void CorrectTotalDefense()
+        public void CorrectGetTotalDefense()
         {
             /* la defensa de merlin es igual a la suma de de la defensa del libro de hechizos y el stick*/
-            Assert.AreEqual(merlin.ObjectBook.Spell.Defense + merlin.ObjectStick.Defense, merlin.TotalDefense());
+            Assert.AreEqual(merlin.ObjectBook.Spell.Armor + merlin.ObjectStick.Armor, merlin.GetTotalArmor());
         }
 
         [Test]

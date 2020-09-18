@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 namespace Library
@@ -24,26 +25,31 @@ namespace Library
 
         /* Expert:  Posee un objeto, y en base al mismo puede
         calcular el total del daño producido personaje*/
-        public int TotalAttack()
+        public int GetTotalDmg()
         {
-            return this.ObjectBook.Attack + this.ObjectStick.Attack ;
+            return this.ObjectBook.Dmg + this.ObjectStick.Dmg ;
         }
 
         /* Expert:  Posee un objeto, y en base al mismo puede
         calcular el total de la defensa de un personaje*/
-        public int TotalDefense()
+        public int GetTotalArmor()
         {
-            return this.ObjectBook.Defense + this.ObjectStick.Defense;
+            return this.ObjectBook.Armor + this.ObjectStick.Armor;
         }
 
         /* Expert:  Posee el ataque del personaje, y por lo tanto solo necesita la vida del mago indicado*/
-        public void ToAttack(Wizard mage)
+        public void MakeDmg(Wizard mage)
         {
-            mage.Health = mage.Health - this.ObjectBook.Attack - this.ObjectStick.Attack;
+            float absorption = (mage.GetTotalArmor()*0.008f)/10;
+            float dmg = ((GetTotalDmg()) * (1 - (absorption>0.8f? 0.8f : absorption)));
+            
+            mage.Health -= Convert.ToInt32(dmg);
+        
+            Console.WriteLine($"{this.Name} caused {Convert.ToInt32(dmg)} damage to {mage.Name}\n");
         }
 
         /* Expert:  Conoce la vida inicial y por lo tanto puede hacerlo por si misma*/
-        public void ToHeal()
+        public void RestoreHealth()
         {
             this.Health = this.BasicHealth;
         }
@@ -66,6 +72,13 @@ namespace Library
         {
             this.ObjectBook = null;
         }
-
+        public string MessageHealth()
+        {
+            return ($"{this.Name} has {this.Health}Hp\n");
+        }
+        public string MessageCharacter()
+        {
+            return ($"Hero: {this.Name} \nHealth: {this.Health} \n_Items_{ObjectBook.Message()}{ObjectStick.Message()}\n");
+        }
     }
 }

@@ -4,15 +4,15 @@ namespace Library
     {
         public string Name{get; set;}
 
-        public int Attack{get; set;}
+        public int Dmg{get; set;}
 
-        public int Defense{get; set;}
+        public int Armor{get; set;}
 
-        public Spell(string Name, int Attack = 0, int Defense = 0)
+        public Spell(string Name, int Dmg = 0, int Armor = 0)
         {
             this.Name = Name;
-            this.Attack = Attack;
-            this.Defense = Defense;
+            this.Dmg = Dmg;
+            this.Armor = Armor;
         }
     }
 }
